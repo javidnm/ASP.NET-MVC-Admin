@@ -1,0 +1,52 @@
+﻿@model IEnumerable<Vizew.WebUI.Models.Entity.Contact>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Mesajlar</h2>
+
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Name)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Email)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Message)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.IsReady)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    var style = (item.IsReady == false) ? "font-weight:bold" : "";
+
+    <tr style="@style">
+        <td>
+            @Html.DisplayFor(modelItem => item.Name)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Email)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Message)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.IsReady)
+        </td>
+        <td>
+            <a href="@Url.Action("Edit", new { id = item.Id })" class="btn btn-success btn-sm"><i class="fa fa-edit text-light"></i></a>
+            <a href="@Url.Action("Details", new { id = item.Id })" class="btn btn-info btn-sm"><i class="fa fa-search text-light"></i></a>
+            <a href="@Url.Action("Delete", new { id = item.Id })" class="btn btn-danger btn-sm"><i class="fa fa-trash text-light"></i></a>
+        </td>
+    </tr>
+}
+
+</table>
