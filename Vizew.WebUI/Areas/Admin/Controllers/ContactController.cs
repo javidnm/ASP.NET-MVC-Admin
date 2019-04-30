@@ -99,7 +99,16 @@ namespace Vizew.WebUI.Areas.Admin.Controllers
             db.SaveChanges();
             return RedirectToAction("Index");
         }
-
+        public ActionResult Modal(int? id)
+        {
+           
+            Contact contact = db.Contact.Find(id);
+            if (contact == null)
+            {
+                return HttpNotFound();
+            }
+            return View();
+        }
         protected override void Dispose(bool disposing)
         {
             if (disposing)

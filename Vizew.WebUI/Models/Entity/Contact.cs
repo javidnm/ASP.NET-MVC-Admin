@@ -1,4 +1,5 @@
-﻿using System.ComponentModel;
+﻿using System;
+using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 
 namespace Vizew.WebUI.Models.Entity
@@ -17,5 +18,9 @@ namespace Vizew.WebUI.Models.Entity
         [DisplayName("Oxunanlar")]
 
         public bool IsReady { get; set; }
+        public bool IsAnswered { get; set; }
+        public DateTime AnsweredDate { get; set; }
+        public string Answer { get; set; }
+
     }
 }
